@@ -8,7 +8,7 @@
     "version": "independent",
     "command": {
         "version": {
-          "allowBranch": ["main", "development"]
+          "allowBranch": ["main", "dev"]
         }
       }
 }
