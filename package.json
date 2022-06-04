@@ -1,0 +1,11 @@
+{
+    "private": true,
+    "workspaces": [
+        "menu-store-backend",
+        "menu-store-frontend"
+    ],
+    "scripts": {
+        "test": "lerna run test",
+        "new-version": "lerna version --conventional-commits --yes"
+    }
+ }

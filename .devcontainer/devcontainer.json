@@ -1,0 +1,13 @@
+{
+	"name": "My-dev",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "my-dev",
+	"workspaceFolder": "/workspace",
+	"settings": {},
+	"extensions": [
+		"dbaeumer.vscode-eslint"
+	],
+	"forwardPorts": [3000,8080,3306],
+	"remoteUser": "node",
+	"postCreateCommand": "bash .devcontainer/post-create-command.sh"
+}
