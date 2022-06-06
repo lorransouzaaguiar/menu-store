@@ -1,0 +1,14 @@
+{
+  "name": "menu-store-backend",
+  "version": "0.0.1",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon ./server.js localhost 8080",
+    "test": "echo 'teste no backend'"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16"
+  }
+}

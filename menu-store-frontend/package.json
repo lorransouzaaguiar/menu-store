@@ -1,0 +1,9 @@
+{
+  "name": "menu-store-frontend",
+  "version": "0.0.1",
+  "private": true,
+  "main": "pages/index.js",
+  "scripts": {
+    "test": "echo 'teste no frontend'"
+  }
+}
