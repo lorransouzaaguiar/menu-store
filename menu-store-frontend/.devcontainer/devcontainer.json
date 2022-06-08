@@ -1,13 +1,12 @@
 {
 	"name": "sushi-store-frontend",
 	"dockerComposeFile": "../../docker-compose.yml",
-	"workspaceFolder": "/workspace/sushi-store-frontend",
+	"workspaceFolder": "/menu-store/menu-store-frontend",
 	"service": "frontend",
 	"settings": {},
 	"extensions": [
-		"dbaeumer.vscode-eslint",
-		"rangav.vscode-thunder-client"
+		"dbaeumer.vscode-eslint"
 	],
-	"forwardPorts": [3000],
+	"forwardPorts": [8080],
 	"remoteUser": "node"
 }
