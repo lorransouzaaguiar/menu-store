@@ -1,0 +1,9 @@
+[user]
+	name = Lorran Aguiar
+	email = lorransouzaaguiar2010@gmail.com
+[alias]
+	s = !git status -s
+	c = !git commit
+	l = !git log --pretty=format:'%C(blue)%h %C(red)%d %C(white)%s - %C(cyan)%cn, %C(green)%cr'
+[credential]
+	helper = "!f() { /home/node/.vscode-server/bin/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5/node /tmp/vscode-remote-containers-4df0c6d988d63ea8ec19ee770741c0b14b2c0126.js $*; }; f"

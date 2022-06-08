@@ -1,11 +1,13 @@
 version: '3.8'
 
 services:
-  my-dev:
-    image: mcr.microsoft.com/vscode/devcontainers/javascript-node:0-16-bullseye
+  dev:
+    build:
+      context: ./.devcontainer
+      dockerfile: Dockerfile
     container_name: menu-store
     volumes:
-      - ..:/workspace:cached
+      - .:/development
     command: sleep infinity
     networks: 
       menu-store-nt:
@@ -15,14 +17,19 @@ services:
     container_name: menu-store-frontend-container
     tty: true
     build:
-      context: ../menu-store-frontend
-      dockerfile: ./.devcontainer/Dockerfile
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - BUILD_CONTEXT=menu-store-frontend
     volumes:
-      - .:/workspace:cached
+      - .:/menu-store/
+    command:
+      - yarn
+      - dev:frontend
     depends_on:
       - backend
     ports:
-      - "3000:3000"
+      - "3000:8080"
     networks:
       menu-store-nt:
 
@@ -31,10 +38,15 @@ services:
     container_name: menu-store-backend-container
     tty: true
     build:
-      context: ../menu-store-backend
-      dockerfile: ./.devcontainer/Dockerfile
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - BUILD_CONTEXT=menu-store-backend
     volumes:
-      - .:/workspace:cached
+      - .:/menu-store/
+    command:
+      - yarn
+      - dev:backend
     depends_on:
       - mysql-db
     ports:
@@ -53,11 +65,10 @@ services:
       menu-store-nt:
     environment:
       MYSQL_ROOT_PASSWORD: "pass_test"
-
 networks: 
   menu-store-nt: 
     driver: "bridge"
     ipam:
       config:
-        - subnet: 178.23.0.0/16
-          gateway: 178.23.0.1
+        - subnet: 178.24.0.0/16
+          gateway: 178.24.0.1
