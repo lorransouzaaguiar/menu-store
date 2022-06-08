@@ -1,7 +1,7 @@
 {
 	"name": "sushi-store-backend",
 	"dockerComposeFile": "../../docker-compose.yml",
-	"workspaceFolder": "/workspace/sushi-store-backend",
+	"workspaceFolder": "/menu-store/menu-store-backend",
 	"service": "backend",
 	"settings": {},
 	"extensions": [
