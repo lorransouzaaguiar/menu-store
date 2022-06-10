@@ -1,13 +1,16 @@
 {
   "name": "menu-store-backend",
   "version": "0.1.1",
+  "type": "module",
   "private": true,
   "main": "server.js",
   "scripts": {
     "test": "echo 'teste no backend'"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.1",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "uuid": "^8.3.2"
   }
 }
