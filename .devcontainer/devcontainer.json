@@ -7,9 +7,10 @@
 		"terminal.integrated.defaultProfile.linux": "bash"
 	},
 	"extensions": [
-		"dbaeumer.vscode-eslint"
+		"dbaeumer.vscode-eslint",
+		"rangav.vscode-thunder-client"
 	],
-	"forwardPorts": [3000,8080,3306],
+	"forwardPorts": [3000,8080],
 	"remoteUser": "node",
 	"postStartCommand": "bash .devcontainer/on-start-container.sh"
 }

@@ -6,5 +6,3 @@ fi
 
 #copy my git global config to the path
 cp -fr .devcontainer/.gitconfig /home/node/
-
-yarn

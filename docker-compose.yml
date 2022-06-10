@@ -21,16 +21,17 @@ services:
       dockerfile: Dockerfile
       args:
         - BUILD_CONTEXT=menu-store-frontend
+        - BUILD_PORT=3000
     volumes:
       - .:/menu-store/
     command:
       - yarn
-      - dev:frontend
+      - dev:f
     depends_on:
       - backend
     ports:
-      - "3000:8080"
-    networks:
+      - "3001:3000"
+    networks: 
       menu-store-nt:
 
   backend:
@@ -42,29 +43,18 @@ services:
       dockerfile: Dockerfile
       args:
         - BUILD_CONTEXT=menu-store-backend
+        - BUILD_PORT=8080
     volumes:
       - .:/menu-store/
     command:
       - yarn
-      - dev:backend
-    depends_on:
-      - mysql-db
-    ports:
-      - "8080:8080"
-    networks:
-      menu-store-nt:
+      - dev:b
 
-  mysql-db: 
-    image: mysql:8.0.28-oracle
-    container_name: menu-store-mysql-container
-    command: --default-authentication-plugin=mysql_native_password
-    ports: 
-      - "3306:3306"
-    restart: always
+    ports:
+      - "8081:8080"
     networks: 
       menu-store-nt:
-    environment:
-      MYSQL_ROOT_PASSWORD: "pass_test"
+      db_nt:
 networks: 
   menu-store-nt: 
     driver: "bridge"
@@ -72,3 +62,5 @@ networks:
       config:
         - subnet: 178.24.0.0/16
           gateway: 178.24.0.1
+  db_nt:
+    external: true
