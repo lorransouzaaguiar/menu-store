@@ -6,9 +6,17 @@
     ],
     "scripts": {
         "new-version": "lerna version --conventional-commits --yes",
-        "dev:frontend": "yarn workspace menu-store-frontend start",
-        "add:frontend": "yarn workspace menu-store-frontend add",
-        "dev:backend": "yarn workspace menu-store-backend nodemon src/server.js",
-        "add:backend": "yarn workspace menu-store-frontend add"
+        "front": "yarn workspace menu-store-frontend",
+        "dev:f": "yarn workspace menu-store-frontend start",
+        "test:f": "yarn front test",
+        "add:f": "yarn front add",
+        "jest_clean:f": "yarn front jest_clean",
+        "back": "yarn workspace menu-store-backend",
+        "dev:b": "yarn back nodemon src/server.js",
+        "add:b": "yarn back add"
+    },
+    "devDependencies": {
+        "axios": "^0.27.2",
+        "jest": "^28.1.1"
     }
 }
