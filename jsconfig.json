@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "backend/*": ["./menu-store-backend/*"],
+            "frontend/*": ["./menu-store-frotend/*"]
+        }
+    },
+    "include": ["menu-store-backend", "menu-store-frotend"],
+    "exclude": ["node_modules"]
+}
