@@ -4,9 +4,6 @@
 	"workspaceFolder": "/menu-store/menu-store-backend",
 	"service": "backend",
 	"settings": {},
-	"extensions": [
-		"dbaeumer.vscode-eslint"
-	],
 	"forwardPorts": [8080],
 	"remoteUser": "node"
 }
