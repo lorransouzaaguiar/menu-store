@@ -1,16 +1,26 @@
 {
-  "name": "menu-store-backend",
-  "version": "0.1.1",
-  "type": "module",
-  "private": true,
-  "main": "server.js",
-  "scripts": {
-    "test": "echo 'teste no backend'"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.1",
-    "nodemon": "^2.0.16",
-    "uuid": "^8.3.2"
-  }
+    "name": "menu-store-backend",
+    "version": "0.1.1",
+    "type": "module",
+    "private": true,
+    "main": "dist/bundle.js",
+    "scripts": {
+        "start": "rollup -c rollup.config.js -w",
+        "test": "jest --watchAll --runInBand --detectOpenHandles",
+        "test:file": "yarn test --forceExit --",
+        "dotenv:knex": "babel-node -r dotenv/config --experimental-modules ./../node_modules/.bin/knex --knexfile src/app/db/knexfile.js "
+    },
+    "dependencies": {
+        "@lorransouzaaguiar/scheval": "1.0.0-alpha.1",
+        "body-parser": "^1.20.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.1",
+        "express": "^4.18.1",
+        "knex": "^2.1.0",
+        "mysql2": "^2.3.3"
+    },
+    "devDependencies": {
+        "@babel/node": "^7.17.10",
+        "supertest": "^6.2.3"
+    }
 }
