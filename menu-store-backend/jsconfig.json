@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "checkJs": true,
+        "target": "ES5",
+        "module": "ES2015",
+        "moduleResolution": "node",
+        "baseUrl": "src/",
+        "paths": {
+            "@App/*": ["app/*"],
+            "@Category/*": ["category/*"],
+            "@Product/*": ["product/*"],
+            "@Cart/*": ["cart/*"]
+        },
+        "sourceMap": true
+    },
+    "exclude": ["node_modules", "dist"]
+}
