@@ -1,16 +1,22 @@
 {
-	"name": "dev",
-	"dockerComposeFile": "../docker-compose.yml",
-	"service": "dev",
-	"workspaceFolder": "/development",
-	"settings": {
-		"terminal.integrated.defaultProfile.linux": "bash"
-	},
-	"extensions": [
-		"dbaeumer.vscode-eslint",
-		"rangav.vscode-thunder-client"
-	],
-	"forwardPorts": [3000,8080],
-	"remoteUser": "node",
-	"postStartCommand": "bash .devcontainer/on-start-container.sh"
+    "name": "dev",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "dev",
+    "workspaceFolder": "/development",
+    "settings": {
+        "extensions.autoCheckUpdates": false,
+        "extensions.autoUpdate": false,
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "js/ts.implicitProjectConfig.checkJs": true,
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "extensions": [
+        "rangav.vscode-thunder-client",
+        "cweijan.vscode-mysql-client2",
+        "esbenp.prettier-vscode@8.0.1"
+    ],
+    "forwardPorts": [3000, 8080],
+    "remoteUser": "node",
+    "postStartCommand": "bash .devcontainer/on-start-container.sh"
 }
