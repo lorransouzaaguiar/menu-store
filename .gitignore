@@ -2,3 +2,5 @@ node_modules/
 lerna-debug.log
 yarn-error.log
 .npmrc
+database.js
+db-mock.js
