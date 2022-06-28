@@ -13,7 +13,7 @@ const {
 
 productsRouter.post('/', insertOne)
 productsRouter.route('/:id').delete(removeOne).put(updateOne)
-//productsRouter.get('/:limit/:offset', getByLimitOffset)
+productsRouter.get('/:limit/:offset', getByLimitOffset)
 //productsRouter.get('/categories/:limit/:offset', getByCategories)
 
 export { productsRouter }

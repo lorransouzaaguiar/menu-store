@@ -6,8 +6,9 @@ export const createProduct = ({ id, ...product }) => {
         price: val(product.price).number().isRequired(),
         qtyStock: val(product.qtyStock).number().isRequired(),
         description: val(product.description).string(),
-        category_id: val(product.category_id).number().isRequired(),
+        categoryId: val(product.category_id).number().isRequired(),
     }
+
     if (id) {
         return validate({
             id: val(id).string().isRequired(),
@@ -17,3 +18,21 @@ export const createProduct = ({ id, ...product }) => {
 
     return validate(schema)
 }
+
+export const createProductFromDb = (productDb) => ({
+    id: productDb.product_id,
+    title: productDb.product_title,
+    price: productDb.product_price,
+    qty: productDb.product_qtyStock,
+    description: productDb.product_description,
+    categoryId: productDb.product_category_id,
+})
+
+export const createProductToDb = (product) => ({
+    product_id: product.id,
+    product_title: product.title,
+    product_price: product.price,
+    product_qtyStock: product.qtyStock,
+    product_description: product.description,
+    product_category_id: product.categoryId,
+})

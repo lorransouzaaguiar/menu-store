@@ -1,41 +1,40 @@
-import db from '@App/db/connection'
 import { val, validate } from '@lorransouzaaguiar/scheval'
-import { createProduct } from '@Product/index'
+import {
+    createProduct,
+    createProductFromDb,
+    createProductToDb,
+} from '@Product/index'
 import { httpResponse } from '@App/http/request-response'
-
-const TABLE = 'products'
+import { productRepository } from './repository'
 
 export const productController = () => {
     const { invalidParams, ok, serverError } = httpResponse()
-
+    const repo = productRepository()
     /**
      * @param {import('express').Request} req
      * @param {import('express').Response} res
-     * */
+     */
     const insertOne = (req, res) => {
         const { data, isValid, errors } = createProduct({ ...req.body })
         if (!isValid)
             return res
                 .status(invalidParams.statusCode)
                 .send(invalidParams.body(errors))
-        return (
-            db
-                .insert(data)
-                //.returning('id')
-                .into(TABLE)
-                .then((response) =>
-                    res.status(ok.statusCode).send(ok.body(response[0]))
-                )
-                .catch((error) =>
-                    res.status(serverError.statusCode).send(error)
-                )
-        )
+
+        const productToDb = createProductToDb(data)
+        return repo
+            .insertOne(productToDb)
+
+            .then((response) =>
+                res.status(ok.statusCode).send(ok.body(response[0]))
+            )
+            .catch((error) => res.status(serverError.statusCode).send(error))
     }
 
     /**
      * @param {import('express').Request} req
      * @param {import('express').Response} res
-     * */
+     */
     const updateOne = (req, res) => {
         const { id } = req.params
         const { data, isValid, errors } = createProduct({ id, ...req.body })
@@ -43,9 +42,10 @@ export const productController = () => {
             return res
                 .status(invalidParams.statusCode)
                 .send(invalidParams.body(errors))
-        return db(TABLE)
-            .where('id', data.id)
-            .update(data)
+
+        const productToDb = createProductToDb(data)
+        return repo
+            .updateOne(data.id, productToDb)
             .then((response) =>
                 res.status(ok.statusCode).send(ok.body(response))
             )
@@ -57,7 +57,7 @@ export const productController = () => {
     /**
      * @param {import('express').Request} req
      * @param {import('express').Response} res
-     * */
+     */
     const removeOne = (req, res) => {
         const { id } = req.params
         const { data, isValid, errors } = validate({
@@ -67,9 +67,8 @@ export const productController = () => {
             return res
                 .status(invalidParams.statusCode)
                 .send(invalidParams.body(errors))
-        return db(TABLE)
-            .where('id', parseInt(data.id))
-            .delete()
+        return repo
+            .removeOne(data.id)
             .then((response) =>
                 res.status(ok.statusCode).send(ok.body(response))
             )
@@ -79,7 +78,7 @@ export const productController = () => {
     /**
      * @param {import('express').Request} req
      * @param {import('express').Response} res
-     * */
+     */
     const getByLimitOffset = (req, res) => {
         const { limit, offset } = req.params
         const { data, isValid, errors } = validate({
@@ -90,11 +89,8 @@ export const productController = () => {
             return res
                 .status(invalidParams.statusCode)
                 .json(invalidParams.body(errors))
-        return db
-            .select('*')
-            .from(TABLE)
-            .limit(parseInt(data.limit))
-            .offset(parseInt(data.offset))
+        return repo
+            .getAllByLimitOffset()
             .then((response) =>
                 res.status(ok.statusCode).json(ok.body(response))
             )
