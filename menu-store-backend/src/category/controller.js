@@ -131,11 +131,7 @@ export const categoryController = () => {
                     delete product['categoryId']
                     return product
                 })
-                /*  const products = productsDb.map((product) => {
-                    delete product['product_category_id']
-                    return product
-                }) */
-                //console.log(products)
+
                 categoriesWithProducts.push({
                     id: category.id,
                     description: category.description,
