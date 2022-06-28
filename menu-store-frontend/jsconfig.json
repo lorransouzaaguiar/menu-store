@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "target": "ES5",
+        "module": "ES2015",
+        "moduleResolution": "node",
+        "baseUrl": "src/",
+        "paths": {
+            "@App/*": ["app/*"],
+            "@Cart/*": ["cart/*"],
+            "@Menu/*": ["menu/*"],
+            "@Shared/*": ["shared/*"]
+        },
+        "sourceMap": true
+    },
+    "exclude": ["node_modules", "dist"]
+}
