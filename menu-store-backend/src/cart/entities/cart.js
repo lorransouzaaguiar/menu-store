@@ -1,12 +1,12 @@
 import { toDouble } from '../../app/utils/number-double'
-import { CartItemfromDb } from './cart-items'
+import { createCartItemfromDb } from './cart-items'
 
-export const Cart = ({
+export const createCart = ({
     id,
     items = [],
-    order_price = 0,
-    delivery_fee = 0,
-    purchase_price = 0,
+    orderPrice = 0,
+    deliveryFee = 0,
+    purchasePrice = 0,
 }) => {
     const calculateOrderPrice = () => {
         const calculatedOrderPrice = items.reduce(
@@ -14,19 +14,19 @@ export const Cart = ({
             0
         )
 
-        order_price = toDouble(calculatedOrderPrice, 2)
+        orderPrice = toDouble(calculatedOrderPrice, 2)
     }
 
     const calculatePurchasePrice = () => {
-        const calculatePurchasePrice = order_price + delivery_fee
-        purchase_price = toDouble(calculatePurchasePrice, 2)
+        const calculatePurchasePrice = orderPrice + deliveryFee
+        purchasePrice = toDouble(calculatePurchasePrice, 2)
     }
 
     const getId = () => id
     const getItems = () => items
-    const getOrderPrice = () => order_price
-    const getDeliveryFee = () => delivery_fee
-    const getPurchasePrice = () => purchase_price
+    const getOrderPrice = () => orderPrice
+    const getDeliveryFee = () => deliveryFee
+    const getPurchasePrice = () => purchasePrice
 
     return Object.freeze({
         getId,
@@ -39,18 +39,18 @@ export const Cart = ({
     })
 }
 
-export const CartToDb = (cart) => ({
+export const createCartToDb = (cart) => ({
     cart_id: cart.getId(),
     cart_order_price: cart.getOrderPrice(),
-    cart_delivery_fee: cart.getDeliveryFee(),
-    cart_purchase_price: cart.getPurchasePrice(),
+    cart_delivery_Fee: cart.getDeliveryFee(),
+    cart_purchase_Price: cart.getPurchasePrice(),
 })
 
-export const CartFromDb = (cartDb, cartItemsDb) =>
-    Cart({
+export const createCartFromDb = (cartDb, cartItemsDb) =>
+    createCart({
         id: cartDb.cart_id,
-        items: cartItemsDb.map((item) => CartItemfromDb(item)),
-        order_price: cartDb.cart_order_price,
-        delivery_fee: cartDb.cart_delivery_fee,
-        purchase_price: cartDb.cart_purchase_price,
+        items: cartItemsDb.map((item) => createCartItemfromDb(item)),
+        orderPrice: cartDb.cart_order_price,
+        deliveryFee: cartDb.cart_deliveryFee,
+        purchasePrice: cartDb.cart_purchasePrice,
     })
