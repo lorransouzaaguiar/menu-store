@@ -4,9 +4,6 @@
 	"workspaceFolder": "/menu-store/menu-store-frontend",
 	"service": "frontend",
 	"settings": {},
-	"extensions": [
-		"dbaeumer.vscode-eslint"
-	],
 	"forwardPorts": [3000],
 	"remoteUser": "node"
 }
