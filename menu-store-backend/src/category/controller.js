@@ -7,6 +7,7 @@ import {
 } from '@Category/index'
 import { httpResponse } from '@App/http/request-response'
 import { categoryRepository } from '@Category/repository'
+import { createProductFromDb } from '@Product/index'
 
 export const categoryController = () => {
     const { invalidParams, ok, serverError } = httpResponse()
@@ -115,19 +116,29 @@ export const categoryController = () => {
 
         try {
             const categoriesDb = await repo.getAllByLimitOffset()
-            for (const category of categoriesDb) {
+            const categories = categoriesDb.map((categoryDb) =>
+                createCategoryFromDb(categoryDb)
+            )
+
+            for (const category of categories) {
                 const productsDb = await db
                     .select('*')
                     .from('products')
-                    .where('product_category_id', category.category_id)
-                const products = productsDb.map((product) => {
-                    delete product['product_category_id']
+                    .where('product_category_id', category.id)
+
+                const products = productsDb.map((productDb) => {
+                    const product = createProductFromDb(productDb)
+                    delete product['categoryId']
                     return product
                 })
+                /*  const products = productsDb.map((product) => {
+                    delete product['product_category_id']
+                    return product
+                }) */
                 //console.log(products)
                 categoriesWithProducts.push({
-                    id: category.category_id,
-                    description: category.category_description,
+                    id: category.id,
+                    description: category.description,
                     products,
                 })
             }
