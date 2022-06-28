@@ -1,6 +1,6 @@
 import { toDouble } from '../../app/utils/number-double'
 
-export const CartItem = ({ id, product, qty = 0, amount = 0 }) => {
+export const createCartItem = ({ id, product, qty = 0, amount = 0 }) => {
     const incrementQty = () => {
         qty++
         updateAmount()
@@ -36,8 +36,8 @@ export const CartItem = ({ id, product, qty = 0, amount = 0 }) => {
     })
 }
 
-export const CartItemfromDb = (cartItemDb) =>
-    CartItem({
+export const createCartItemfromDb = (cartItemDb) =>
+    createCartItem({
         id: cartItemDb.cart_item_cart_id,
         product: {
             id: cartItemDb.cart_item_product_id,
@@ -46,3 +46,10 @@ export const CartItemfromDb = (cartItemDb) =>
         qty: cartItemDb.cart_item_qty,
         amount: cartItemDb.cart_item_amount,
     })
+
+export const createCartItemToDb = (cartItem) => ({
+    cart_item_cart_id: cartItem.getId(),
+    cart_item_product_id: cartItem.getProduct().id,
+    cart_item_qty: cartItem.getQty(),
+    cart_item_amount: cartItem.getAmount(),
+})
