@@ -1,6 +1,10 @@
 import db from '@App/db/connection'
 import { val, validate } from '@lorransouzaaguiar/scheval'
-import { createCategory, createCategoryToDb } from '@Category/index'
+import {
+    createCategory,
+    createCategoryFromDb,
+    createCategoryToDb,
+} from '@Category/index'
 import { httpResponse } from '@App/http/request-response'
 import { categoryRepository } from '@Category/repository'
 
@@ -90,9 +94,13 @@ export const categoryController = () => {
                 .json(invalidParams.body(errors))
         return repo
             .getAllByLimitOffset(data.limit, data.offset)
-            .then((response) =>
-                res.status(ok.statusCode).json(ok.body(response))
-            )
+            .then((categoriesDb) => {
+                const categories = categoriesDb.map((categoryDb) =>
+                    createCategoryFromDb(categoryDb)
+                )
+
+                res.status(ok.statusCode).json(ok.body(categories))
+            })
             .catch((_) =>
                 res.status(serverError.statusCode).json(serverError.body())
             )
