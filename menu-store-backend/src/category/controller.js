@@ -1,53 +1,29 @@
 import db from '@App/db/connection'
 import { val, validate } from '@lorransouzaaguiar/scheval'
-import { createCategory } from '@Category/index'
+import { createCategory, createCategoryToDb } from '@Category/index'
 import { httpResponse } from '@App/http/request-response'
-
-const TABLE = 'categories'
+import { categoryRepository } from '@Category/repository'
 
 export const categoryController = () => {
     const { invalidParams, ok, serverError } = httpResponse()
-
+    const repo = categoryRepository()
     /**
      * @param {import('express').Request} req
      * @param {import('express').Response} res
-     * */
+     */
     const insertOne = (req, res) => {
         const { data, isValid, errors } = createCategory({ ...req.body })
         if (!isValid)
             return res
                 .status(invalidParams.statusCode)
                 .send(invalidParams.body(errors))
-        return (
-            db
-                .insert(data)
-                //.returning('id')
-                .into(TABLE)
-                .then((response) =>
-                    res.status(ok.statusCode).send(ok.body(response[0]))
-                )
-                .catch((_) =>
-                    res.status(serverError.statusCode).send(serverError.body())
-                )
-        )
-    }
 
-    /**
-     * @param {import('express').Request} req
-     * @param {import('express').Response} res
-     * */
-    const updateOne = (req, res) => {
-        const { id } = req.params
-        const { data, isValid, errors } = createCategory({ id, ...req.body })
-        if (!isValid)
-            return res
-                .status(invalidParams.statusCode)
-                .send(invalidParams.body(errors))
-        return db(TABLE)
-            .where('id', data.id)
-            .update(data)
+        const categoryToDb = createCategoryToDb(data)
+
+        return repo
+            .insertOne(categoryToDb)
             .then((response) =>
-                res.status(ok.statusCode).send(ok.body(response))
+                res.status(ok.statusCode).send(ok.body(response[0]))
             )
             .catch((_) =>
                 res.status(serverError.statusCode).send(serverError.body())
@@ -57,7 +33,29 @@ export const categoryController = () => {
     /**
      * @param {import('express').Request} req
      * @param {import('express').Response} res
-     * */
+     */
+    const updateOne = (req, res) => {
+        const { id } = req.params
+        const { data, isValid, errors } = createCategory({ id, ...req.body })
+        if (!isValid)
+            return res
+                .status(invalidParams.statusCode)
+                .send(invalidParams.body(errors))
+
+        const categoryToDb = createCategoryToDb(data)
+
+        return repo
+            .updateOne(data.id, categoryToDb)
+            .then((response) =>
+                res.status(ok.statusCode).send(ok.body(response))
+            )
+            .catch((err) => res.status(serverError.statusCode).send(err))
+    }
+
+    /**
+     * @param {import('express').Request} req
+     * @param {import('express').Response} res
+     */
     const removeOne = (req, res) => {
         const { id } = req.params
         const { data, isValid, errors } = validate({
@@ -67,9 +65,9 @@ export const categoryController = () => {
             return res
                 .status(invalidParams.statusCode)
                 .send(invalidParams.body(errors))
-        return db(TABLE)
-            .where('id', parseInt(data.id))
-            .delete()
+
+        return repo
+            .removeOne(data.id)
             .then((response) =>
                 res.status(ok.statusCode).send(ok.body(response))
             )
@@ -79,7 +77,7 @@ export const categoryController = () => {
     /**
      * @param {import('express').Request} req
      * @param {import('express').Response} res
-     * */
+     */
     const getByLimitOffset = (req, res) => {
         const { limit, offset } = req.params
         const { data, isValid, errors } = validate({
@@ -90,11 +88,8 @@ export const categoryController = () => {
             return res
                 .status(invalidParams.statusCode)
                 .json(invalidParams.body(errors))
-        return db
-            .select('*')
-            .from(TABLE)
-            .limit(parseInt(data.limit))
-            .offset(parseInt(data.offset))
+        return repo
+            .getAllByLimitOffset(data.limit, data.offset)
             .then((response) =>
                 res.status(ok.statusCode).json(ok.body(response))
             )
@@ -106,39 +101,40 @@ export const categoryController = () => {
     /**
      * @param {import('express').Request} req
      * @param {import('express').Response} res
-     * */
+     */
     const getManyWithProducts = async (req, res) => {
         const categoriesWithProducts = []
 
         try {
-            const categoriesDb = await db.select('*').from('categories')
+            const categoriesDb = await repo.getAllByLimitOffset()
             for (const category of categoriesDb) {
                 const productsDb = await db
                     .select('*')
                     .from('products')
-                    .where('category_id', '=', category.id)
+                    .where('product_category_id', category.category_id)
                 const products = productsDb.map((product) => {
-                    delete product['category_id']
+                    delete product['product_category_id']
                     return product
                 })
                 //console.log(products)
                 categoriesWithProducts.push({
-                    id: category.id,
-                    description: category.description,
+                    id: category.category_id,
+                    description: category.category_description,
                     products,
                 })
             }
-
-            res.status(ok.statusCode).json(ok.body(categoriesWithProducts))
-        } catch (err) {
-            res.status(serverError.statusCode).json(serverError.body())
+            return res
+                .status(ok.statusCode)
+                .json(ok.body(categoriesWithProducts))
+        } catch (error) {
+            return res.status(serverError.statusCode).json(error)
         }
     }
 
     /**
      * @param {import('express').Request} req
      * @param {import('express').Response} res
-     * */
+     */
     const getOneWithProducts = async (req, res) => {
         const { slug } = req.params
         try {

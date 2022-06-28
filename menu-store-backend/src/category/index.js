@@ -13,3 +13,13 @@ export const createCategory = ({ id, ...category }) => {
 
     return validate(schema)
 }
+
+export const createCategoryFromDb = (categoryDb) => ({
+    id: categoryDb.category_id,
+    description: categoryDb.category_description,
+})
+
+export const createCategoryToDb = (category) => ({
+    category_id: category.id,
+    category_description: category.description,
+})
