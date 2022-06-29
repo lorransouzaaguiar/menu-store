@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/lorransouzaaguiar/menu-store/compare/menu-store-backend@0.2.0...menu-store-backend@0.3.0) (2022-06-29)
+
+
+### Bug Fixes
+
+* fix json attributes when fetching all categories ([a7a380e](https://github.com/lorransouzaaguiar/menu-store/commit/a7a380e5589c4cdb57a680f070f384fd563e5fb0))
+* fix json attributes when fetching all products by categories ([33e7686](https://github.com/lorransouzaaguiar/menu-store/commit/33e76867a643f1c940d728fc46d00ce6a9143209))
+* fix json attributes when fetching products ([1686212](https://github.com/lorransouzaaguiar/menu-store/commit/168621241c18915cafe4ca211b467a199021a354))
+* fixes status code 500 error when updating and deleting categories ([0a49a5b](https://github.com/lorransouzaaguiar/menu-store/commit/0a49a5b4d56fc382e143626217762d54c35813d7))
+* fixes status code 500 error when updating and deleting products ([6a6ebec](https://github.com/lorransouzaaguiar/menu-store/commit/6a6ebec5f417b5e53e0a104763a01e87797e3a30))
+
+
+### BREAKING CHANGES
+
+* before the api returned the attributes category_id and description_id. Now
+attributes have been changed to id and description
+
+
+
+
+
 # [0.2.0](https://github.com/lorransouzaaguiar/menu-store/compare/menu-store-backend@0.1.1...menu-store-backend@0.2.0) (2022-06-28)
 
 
