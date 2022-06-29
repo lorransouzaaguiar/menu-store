@@ -6,6 +6,8 @@ import {
 } from '@Product/index'
 import { httpResponse } from '@App/http/request-response'
 import { productRepository } from './repository'
+import { categoryRepository } from '@Category/repository'
+import { createCategoryFromDb } from '@Category/index'
 
 export const productController = () => {
     const { invalidParams, ok, serverError } = httpResponse()
@@ -79,24 +81,45 @@ export const productController = () => {
      * @param {import('express').Request} req
      * @param {import('express').Response} res
      */
-    const getByLimitOffset = (req, res) => {
+    const getByLimitOffset = async (req, res) => {
         const { limit, offset } = req.params
+        const productsWithCategories = []
+        const categoryRepo = categoryRepository()
+
         const { data, isValid, errors } = validate({
             limit: val(limit).string().isRequired(),
             offset: val(offset).string().isRequired(),
         })
+
         if (!isValid)
             return res
                 .status(invalidParams.statusCode)
                 .json(invalidParams.body(errors))
-        return repo
-            .getAllByLimitOffset()
-            .then((response) =>
-                res.status(ok.statusCode).json(ok.body(response))
+
+        try {
+            const productsDb = await repo.getAllByLimitOffset(
+                data.limit,
+                data.offset
             )
-            .catch((_) =>
-                res.status(serverError.statusCode).json(serverError.body())
-            )
+
+            for (const productDb of productsDb) {
+                const { categoryId, ...product } =
+                    createProductFromDb(productDb)
+
+                const categoryDb = await categoryRepo.getOne(categoryId)
+                const category = createCategoryFromDb(categoryDb[0])
+                const newProduct = {
+                    ...product,
+                    category,
+                }
+
+                productsWithCategories.push(newProduct)
+            }
+
+            res.status(ok.statusCode).json(ok.body(productsWithCategories))
+        } catch (error) {
+            res.status(serverError.statusCode).json(serverError.body())
+        }
     }
 
     return {
