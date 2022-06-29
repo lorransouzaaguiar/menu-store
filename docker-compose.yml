@@ -35,7 +35,7 @@ services:
             online-menu-nt:
 
     backend:
-        image: backend
+        image: online-menu-backend
         container_name: backend-container
         tty: true
         build:
@@ -43,7 +43,7 @@ services:
             dockerfile: Dockerfile
             args:
                 - BUILD_CONTEXT=backend
-                - BUILD_PORT=8080
+                - BUILD_PORT=4000
         volumes:
             - .:/online-menu/
         command:
@@ -51,7 +51,7 @@ services:
             - dev:b
 
         ports:
-            - '8081:8080'
+            - '8081:4000'
         networks:
             online-menu-nt:
             db_nt:
