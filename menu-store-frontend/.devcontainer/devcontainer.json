@@ -1,9 +1,0 @@
-{
-	"name": "sushi-store-frontend",
-	"dockerComposeFile": "../../docker-compose.yml",
-	"workspaceFolder": "/menu-store/menu-store-frontend",
-	"service": "frontend",
-	"settings": {},
-	"forwardPorts": [3000],
-	"remoteUser": "node"
-}

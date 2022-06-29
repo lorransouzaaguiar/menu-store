@@ -1,17 +1,17 @@
 {
     "private": true,
     "workspaces": [
-        "menu-store-backend",
-        "menu-store-frontend"
+        "backend",
+        "frontend"
     ],
     "scripts": {
-        "lerna:v": "lerna version --conventional-commits --no-push --yes ",
-        "front": "yarn workspace menu-store-frontend",
+        "lerna:v": "lerna version --conventional-commits --yes ",
+        "front": "yarn workspace frontend",
         "dev:f": "yarn front start",
         "test:f": "yarn front test",
         "add:f": "yarn front add",
         "jest_clean:f": "yarn front jest_clean",
-        "back": "yarn workspace menu-store-backend",
+        "back": "yarn workspace backend",
         "dev:b": "yarn back start",
         "test:b": "yarn back test",
         "test-file:b": "yarn back test:file",

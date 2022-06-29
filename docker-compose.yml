@@ -1,66 +1,66 @@
 version: '3.8'
 
 services:
-  dev:
-    build:
-      context: ./.devcontainer
-      dockerfile: Dockerfile
-    container_name: menu-store
-    volumes:
-      - .:/development
-    command: sleep infinity
-    networks: 
-      menu-store-nt:
+    dev:
+        build:
+            context: ./.devcontainer
+            dockerfile: Dockerfile
+        container_name: online-menu
+        volumes:
+            - .:/development
+        command: sleep infinity
+        networks:
+            online-menu-nt:
 
-  frontend:
-    image: menu-store-frontend
-    container_name: menu-store-frontend-container
-    tty: true
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        - BUILD_CONTEXT=menu-store-frontend
-        - BUILD_PORT=3000
-    volumes:
-      - .:/menu-store/
-    command:
-      - yarn
-      - dev:f
-    depends_on:
-      - backend
-    ports:
-      - "3001:3000"
-    networks: 
-      menu-store-nt:
+    frontend:
+        image: online-menu-frontend
+        container_name: frontend-container
+        tty: true
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                - BUILD_CONTEXT=frontend
+                - BUILD_PORT=3000
+        volumes:
+            - .:/online-menu/
+        command:
+            - yarn
+            - dev:f
+        depends_on:
+            - backend
+        ports:
+            - '3001:3000'
+        networks:
+            online-menu-nt:
 
-  backend:
-    image: menu-store-backend
-    container_name: menu-store-backend-container
-    tty: true
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        - BUILD_CONTEXT=menu-store-backend
-        - BUILD_PORT=8080
-    volumes:
-      - .:/menu-store/
-    command:
-      - yarn
-      - dev:b
+    backend:
+        image: backend
+        container_name: backend-container
+        tty: true
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                - BUILD_CONTEXT=backend
+                - BUILD_PORT=8080
+        volumes:
+            - .:/online-menu/
+        command:
+            - yarn
+            - dev:b
 
-    ports:
-      - "8081:8080"
-    networks: 
-      menu-store-nt:
-      db_nt:
-networks: 
-  menu-store-nt: 
-    driver: "bridge"
-    ipam:
-      config:
-        - subnet: 178.24.0.0/16
-          gateway: 178.24.0.1
-  db_nt:
-    external: true
+        ports:
+            - '8081:8080'
+        networks:
+            online-menu-nt:
+            db_nt:
+networks:
+    online-menu-nt:
+        driver: 'bridge'
+        ipam:
+            config:
+                - subnet: 178.24.0.0/16
+                  gateway: 178.24.0.1
+    db_nt:
+        external: true

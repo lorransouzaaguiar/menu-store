@@ -1,0 +1,9 @@
+{
+    "name": "sushi-store-backend",
+    "dockerComposeFile": "../../docker-compose.yml",
+    "workspaceFolder": "/online-menu/backend",
+    "service": "backend",
+    "settings": {},
+    "forwardPorts": [8080],
+    "remoteUser": "node"
+}

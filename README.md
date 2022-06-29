@@ -1,3 +1,3 @@
-# Menu-store
+# online-menu
 
 Sistema de cardápio online

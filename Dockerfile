@@ -2,7 +2,7 @@
 FROM node:lts-slim
 ARG BUILD_CONTEXT
 ARG BUILD_PORT
-WORKDIR /menu-store
+WORKDIR /online-menu
 COPY $BUILD_CONTEXT/ ./$BUILD_CONTEXT/
 RUN yarn install
 USER node
