@@ -7,7 +7,7 @@ import { useFetchCategories } from '../store/async-dispatchs'
 
 export default function Menu() {
     const [state, dispatch] = useReducer(menuReducer, menuState)
-    useFetchCategories({ dispatch, type: 'populate_menu' })
+    useFetchCategories(dispatch, { type: 'populate_menu' })
 
     return (
         <section data-testid="Menu">
@@ -21,29 +21,13 @@ export default function Menu() {
                 <section data-testid="menuSection">
                     <h1>Cardapio</h1>
                     <ul data-testid="menuList">
-                        {state.menuCategories.map((section) => {
-                            const { description, products } = section
-                            return (
-                                <CategoryList
-                                    title={description}
-                                    products={products}
-                                />
-                            )
-                        })}
+                        <CategoryList categories={state.menuCategories} />
                     </ul>
                 </section>
                 <section data-testid="drinkSection">
                     <h1>Bebidas</h1>
                     <ul data-testid="drinkList">
-                        {state.drinkCategories.map((section) => {
-                            const { description, products } = section
-                            return (
-                                <CategoryList
-                                    title={description}
-                                    products={products}
-                                />
-                            )
-                        })}
+                        <CategoryList categories={state.drinkCategories} />
                     </ul>
                 </section>
             </div>

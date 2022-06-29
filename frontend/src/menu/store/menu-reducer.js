@@ -1,6 +1,6 @@
 //@ts-nocheck
 
-import { splitByObjectPropertyValue } from '../../shared/custom-array-methods'
+import { Category, Product, Menu } from '../models/menu'
 
 export const menuState = {
     drinkCategories: [],
@@ -10,17 +10,21 @@ export const menuState = {
 export const menuReducer = (state, action) => {
     switch (action.type) {
         case 'populate_menu': {
-            const categories = action.payload
-            const [drinkCategories, menuCategories] =
-                splitByObjectPropertyValue(
-                    categories.data,
-                    'description',
-                    'bebidas'
+            const categoriesFromApi = action.payload
+
+            const categories = categoriesFromApi.data.map((category) => {
+                const products = category.products.map((product) =>
+                    Product(product)
                 )
+                return Category({ ...category, products })
+            })
+
+            const menu = Menu(categories)
+
             return {
                 ...state,
-                drinkCategories,
-                menuCategories,
+                drinkCategories: menu.getDrinkCategories(),
+                menuCategories: menu.getMenuCategories(),
             }
         }
     }
