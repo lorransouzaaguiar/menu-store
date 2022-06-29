@@ -1,7 +1,7 @@
 import { httpResponse } from '@App/http/request-response'
 import { cartRepository } from '@Cart/repository'
 import { JsonCartCollection } from '@Cart/dto/cart-collections'
-import { CartFromDb, CartToDb } from '@Cart/entities/cart'
+import { createCartFromDb, createCartToDb } from '@Cart/entities/cart'
 
 export const cartController = () => {
     const { ok, serverError } = httpResponse()
@@ -10,7 +10,7 @@ export const cartController = () => {
     /**
      * @param {import('express').Request} req
      * @param {import('express').Response} res
-     * */
+     */
     const createCart = (req, res) => {
         const { body } = req
         return repo
@@ -62,7 +62,10 @@ export const cartController = () => {
         const { cartId, itemId } = req.params
         try {
             const cartDbWithAllItems = await repo.getCartWithAllItems(cartId)
-            const cart = CartFromDb(cartDbWithAllItems[0], cartDbWithAllItems)
+            const cart = createCartFromDb(
+                cartDbWithAllItems[0],
+                cartDbWithAllItems
+            )
 
             const cartItem = cart
                 .getItems()
@@ -72,7 +75,7 @@ export const cartController = () => {
             cart.calculateOrderPrice()
             cart.calculatePurchasePrice()
 
-            const cartToDb = CartToDb(cart)
+            const cartToDb = createCartToDb(cart)
 
             await repo.updateOneItem(cartItem)
             await repo.updateCart(cartToDb)
@@ -92,7 +95,10 @@ export const cartController = () => {
         const { cartId, itemId } = req.params
         try {
             const cartDbWithAllItems = await repo.getCartWithAllItems(cartId)
-            const cart = CartFromDb(cartDbWithAllItems[0], cartDbWithAllItems)
+            const cart = createCartFromDb(
+                cartDbWithAllItems[0],
+                cartDbWithAllItems
+            )
 
             const cartItem = cart
                 .getItems()
@@ -102,7 +108,7 @@ export const cartController = () => {
             cart.calculateOrderPrice()
             cart.calculatePurchasePrice()
 
-            const cartToDb = CartToDb(cart)
+            const cartToDb = createCartToDb(cart)
 
             await repo.updateOneItem(cartItem)
             await repo.updateCart(cartToDb)
