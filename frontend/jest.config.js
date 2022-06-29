@@ -1,7 +1,10 @@
 export default {
     clearMocks: true,
-    testMatch: ["**/src/**/*.test.js"],
+    testMatch: ['**/test/**/*.test.js'],
     testEnvironment: 'jsdom',
-    moduleNameMapper: {"\\.(css|less|scss|sass)$": "identity-obj-proxy"},
-    //setupFilesAfterEnv: ['./mocks/jest.setup.js']
+    moduleNameMapper: {
+        '^@root(.*)$': '<rootDir>/src$1',
+        '^@Menu(.*)$': '<rootDir>/src/menu$1',
+        '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+    },
 }
