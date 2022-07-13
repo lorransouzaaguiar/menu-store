@@ -8,8 +8,7 @@
         "paths": {
             "@App/*": ["app/*"],
             "@Cart/*": ["cart/*"],
-            "@Menu/*": ["menu/*"],
-            "@Shared/*": ["shared/*"]
+            "@Menu/*": ["menu/*"]
         },
         "sourceMap": true
     },
