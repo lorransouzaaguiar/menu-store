@@ -1,10 +1,11 @@
-import React from "react";
+import React from "react"
+import './menu-bar.css'
 
 export default function MenuBar() {
     return (
-        <div>
+        <div class='menu-bar'>
             <header>
-                <img src='logo'/>
+                <img src='logo' />
             </header>
             <nav>
                 <ul>

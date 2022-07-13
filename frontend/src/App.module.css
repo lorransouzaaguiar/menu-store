@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root {
+    --w: #ffffff;
+    --c1: #dadada;
+    --c2: #b8b8b8;
+    --c3: #8a8a8a;
+    --c4: #505050;
+    --c5: #3a3a3a;
+    --c6: #323232;
+    --l1: #fe8e64;
+    --l2: #e77246;
+    --l3: #d25e33;
+    --v1: #9ea741;
+    --v2: #8b9431;
+    --v3: #7e8726;
+}
+
+.app {
+    background-color: var(--c6);
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+}

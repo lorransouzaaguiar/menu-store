@@ -1,0 +1,24 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 40px;
+}
+
+.title {
+    color: var(--c1);
+    text-transform: uppercase;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+}
+
+.menu {
+    color: var(--c2);
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 50px;
+}

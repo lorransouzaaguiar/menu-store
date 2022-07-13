@@ -1,0 +1,27 @@
+.appBar {
+    background-color: var(--c5);
+    height: 40px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 238px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.menuItem {
+    text-decoration: none;
+}
+
+.link {
+    font-size: 12px;
+    color: var(--c2);
+}
+
+.link:focus {
+    color: var(--l2);
+}
