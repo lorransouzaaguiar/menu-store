@@ -3,21 +3,36 @@
     "version": "0.3.2",
     "private": true,
     "type": "module",
+    "main": "index.js",
     "scripts": {
-        "start": "rollup -c rollup.config.js -w",
         "test": "jest --watchAll",
-        "jest_clean": "jest --clearCache"
+        "jest_clean": "jest --clearCache",
+        "dev": "webpack serve --mode development",
+        "build": "webpack build --mode production "
     },
     "dependencies": {
+        "file-loader": "^6.2.0",
+        "msw": "^0.42.3",
         "react": "^18.1.0",
-        "react-dom": "^18.1.0"
+        "react-dom": "^18.1.0",
+        "react-router-dom": "6"
     },
     "devDependencies": {
+        "@babel/core": "^7.12.13",
         "@babel/preset-react": "^7.12.13",
         "@testing-library/jest-dom": "^5.16.4",
         "@testing-library/react": "^13.3.0",
+        "@testing-library/user-event": "^14.2.1",
+        "babel-loader": "^8.2.2",
+        "css-loader": "^5.0.1",
+        "file-loader": "^6.2.0",
+        "html-webpack-plugin": "^5.3.1",
         "identity-obj-proxy": "^3.0.0",
         "jest-environment-jsdom": "^28.1.1",
-        "postcss": "^8.4.14"
+        "postcss": "^8.4.14",
+        "style-loader": "^2.0.0",
+        "webpack": "^5.20.1",
+        "webpack-cli": "^4.5.0",
+        "webpack-dev-server": "^3.11.2"
     }
 }
