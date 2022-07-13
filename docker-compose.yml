@@ -21,7 +21,7 @@ services:
             dockerfile: Dockerfile
             args:
                 - BUILD_CONTEXT=frontend
-                - BUILD_PORT=3000
+                - BUILD_PORT=3030
         volumes:
             - .:/online-menu/
         command:
@@ -30,7 +30,7 @@ services:
         depends_on:
             - backend
         ports:
-            - '3001:3000'
+            - '3000:3030'
         networks:
             online-menu-nt:
 
@@ -51,7 +51,7 @@ services:
             - dev:b
 
         ports:
-            - '8081:4000'
+            - '8080:4000'
         networks:
             online-menu-nt:
             db_nt:
