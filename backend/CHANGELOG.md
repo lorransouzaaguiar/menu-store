@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/lorransouzaaguiar/online-menu/compare/backend@0.3.1...backend@0.3.2) (2022-07-13)
+
+
+### Bug Fixes
+
+* change cart quantity increment and decrement return for cart object ([760976a](https://github.com/lorransouzaaguiar/online-menu/commit/760976a8f70a192afebfcea8f884bd17348c452d))
+
+
+
+
+
 ## 0.3.1 (2022-06-29)
 
 **Note:** Version bump only for package backend

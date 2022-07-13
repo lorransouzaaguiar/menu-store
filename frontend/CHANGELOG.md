@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/lorransouzaaguiar/online-menu/compare/frontend@0.3.2...frontend@0.4.0) (2022-07-13)
+
+
+### Features
+
+* add cart module ([7a0ab28](https://github.com/lorransouzaaguiar/online-menu/commit/7a0ab28a211c6eaaca34baf045f5a4522b6b7153))
+* add global app module ([ade46d1](https://github.com/lorransouzaaguiar/online-menu/commit/ade46d19eab87e82207c73affef3d8d1cd651da4))
+* add menu module ([7c416bf](https://github.com/lorransouzaaguiar/online-menu/commit/7c416bf93b971506d6b28ff5fb61c110a31e4f58))
+
+
+
+
+
 ## [0.3.2](https://github.com/lorransouzaaguiar/online-menu/compare/frontend@0.3.1...frontend@0.3.2) (2022-06-29)
 
 
