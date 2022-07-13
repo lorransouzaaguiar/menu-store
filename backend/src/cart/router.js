@@ -16,7 +16,7 @@ cartRouter.post('/', createCart)
 cartRouter.get('/:id', getWithAllItems)
 cartRouter.post('/item', addItem)
 cartRouter.delete('/item/:id', deleteItem)
-cartRouter.put('/:cartId/item/:itemId/inc', incrementItemQty)
-cartRouter.put('/:cartId/item/:itemId/dec', decrementItemQty)
+cartRouter.get('/:cartId/item/:itemId/inc', incrementItemQty)
+cartRouter.get('/:cartId/item/:itemId/dec', decrementItemQty)
 
 export { cartRouter }

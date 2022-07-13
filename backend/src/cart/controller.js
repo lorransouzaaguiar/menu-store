@@ -85,7 +85,9 @@ export const cartController = () => {
             )
 
             const cartJson = JsonCartCollection(updatedCartDbWithAllItems)
-            return res.status(ok.statusCode).send(ok.body({ cartJson }))
+            return res
+                .status(ok.statusCode)
+                .send(ok.body({ cart: { ...cartJson } }))
         } catch (error) {
             return res.status(serverError.statusCode).send(error)
         }
@@ -118,7 +120,9 @@ export const cartController = () => {
             )
 
             const cartJson = JsonCartCollection(updatedCartDbWithAllItems)
-            return res.status(ok.statusCode).send(ok.body({ cartJson }))
+            return res
+                .status(ok.statusCode)
+                .send(ok.body({ cart: { ...cartJson } }))
         } catch (error) {
             return res.status(serverError.statusCode).send(error)
         }
