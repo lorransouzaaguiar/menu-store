@@ -5,7 +5,7 @@
 exports.seed = async function (knex) {
     // Deletes ALL existing entries
     //await knex('products').del()
-    await knex('products').insert([
+    return await knex('products').insert([
         {
             product_id: 1,
             product_title: 'Shoyu Light',
