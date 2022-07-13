@@ -1,3 +1,5 @@
+const API_URI = process.env.API_URI + process.env.PORT
+
 const JsonCart = (cartData, cartItems) => ({
     id: cartData.cart_id,
     items: cartItems,
@@ -15,8 +17,8 @@ const JsonCartItems = (data) => ({
     },
     qty: data.cart_item_qty,
     _links: {
-        'increment-qty': `${process.env.API_URI}/cart/${data.cart_id}/item/${data.product_id}/inc`,
-        'decrement-qty': `${process.env.API_URI}/cart/${data.cart_id}/item/${data.product_id}/dec`,
+        'increment-qty': `${API_URI}/cart/${data.cart_id}/item/${data.product_id}/inc`,
+        'decrement-qty': `${API_URI}/cart/${data.cart_id}/item/${data.product_id}/dec`,
     },
 })
 
