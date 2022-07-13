@@ -1,30 +1,34 @@
 //@ts-nocheck
 
-import { Category, Product, Menu } from '../models/menu'
+/** @typedef {{id: number, description: string, products: []}} CategoryType */
+/** @typedef {{drinks: {}, menu: [], }} MenuStateType*/
 
+/**@type {MenuStateType} */
 export const menuState = {
-    drinkCategories: [],
-    menuCategories: [],
+    drinks: {},
+    menu: [],
 }
 
-export const menuReducer = (state, action) => {
+/** @returns {MenuStateType} */
+export const menuReducer = (/**@type {MenuStateType} */ state, action) => {
     switch (action.type) {
-        case 'populate_menu': {
+        case 'FETCH_CATEGORIES': {
             const categoriesFromApi = action.payload
 
-            const categories = categoriesFromApi.data.map((category) => {
-                const products = category.products.map((product) =>
-                    Product(product)
-                )
-                return Category({ ...category, products })
-            })
+            const drinks = categoriesFromApi.filter(
+                (category) => category.description === 'bebidas'
+            )[0]
 
-            const menu = Menu(categories)
+            const menu = categoriesFromApi.filter(
+                (category) =>
+                    category.description !== 'bebidas' &&
+                    category.description !== 'promoção'
+            )
 
             return {
                 ...state,
-                drinkCategories: menu.getDrinkCategories(),
-                menuCategories: menu.getMenuCategories(),
+                drinks,
+                menu,
             }
         }
     }

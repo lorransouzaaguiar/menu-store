@@ -1,0 +1,16 @@
+.title {
+    color: var(--c1);
+    background-color: var(--c4);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    height: 40px;
+    margin-bottom: 8px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    text-transform: uppercase;
+}
