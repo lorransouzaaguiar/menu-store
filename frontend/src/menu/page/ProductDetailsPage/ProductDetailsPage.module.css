@@ -1,0 +1,108 @@
+.details {
+    padding-bottom: 15px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    margin: 12px 15px;
+}
+
+.title {
+    color: var(--c1);
+
+    margin-bottom: 12px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 42px;
+}
+
+.description {
+    color: var(--c2);
+    max-width: 340px;
+    max-height: 56px;
+    margin-bottom: 12px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.price {
+    max-width: 64px;
+    height: 28px;
+    color: var(--v1);
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.subTitle {
+    color: var(--c1);
+    margin-top: 24px;
+    margin-bottom: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.observation {
+    background-color: var(--c5);
+    height: 236px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: 26px;
+}
+
+.observation .title {
+    color: var(--c3);
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 15px 15px 15px;
+}
+
+.footer .addButton {
+    min-width: 195px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: var(--l3);
+}
+
+.footer .addButton .add {
+    color: var(--c6);
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.footer .addButton .info {
+    color: var(--w);
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+}
