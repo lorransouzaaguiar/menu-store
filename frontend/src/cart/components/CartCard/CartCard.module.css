@@ -1,0 +1,45 @@
+.card {
+    display: flex;
+    height: 125px;
+    background-color: var(--c5);
+    border-radius: 10px;
+}
+
+.image {
+    min-width: 105;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.content {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.title {
+    color: var(--c1);
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer .info {
+    color: var(--v1);
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+}
