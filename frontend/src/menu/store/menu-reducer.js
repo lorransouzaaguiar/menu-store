@@ -1,12 +1,13 @@
 //@ts-nocheck
 
 /** @typedef {{id: number, description: string, products: []}} CategoryType */
-/** @typedef {{drinks: {}, menu: [], }} MenuStateType*/
+/** @typedef {{drinks: {}, menu: [], onSale: {}}} MenuStateType*/
 
 /**@type {MenuStateType} */
 export const menuState = {
     drinks: {},
     menu: [],
+    onSale: {},
 }
 
 /** @returns {MenuStateType} */
@@ -25,10 +26,15 @@ export const menuReducer = (/**@type {MenuStateType} */ state, action) => {
                     category.description !== 'promoção'
             )
 
+            const onSale = categoriesFromApi.filter(
+                (category) => category.description === 'promoção'
+            )[0]
+
             return {
                 ...state,
                 drinks,
                 menu,
+                onSale,
             }
         }
     }

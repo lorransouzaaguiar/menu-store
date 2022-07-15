@@ -1,0 +1,33 @@
+.btn {
+    width: 116px;
+    height: 46px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid var(--c3);
+}
+
+.btn button {
+    color: var(--c1);
+    background-color: var(--c6);
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.btn span {
+    color: var(--c1);
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.btn button:focus {
+    color: var(--l3);
+}
