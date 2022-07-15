@@ -17,7 +17,7 @@ export default function MenuPage() {
         <>
             <Header />
             <AppBar />
-            <section data-testid="Menu" className={style}>
+            <section data-testid="Menu" className={style.menu}>
                 <img className={style.banner} src={MenuBannerJpg}></img>
                 <div className={style.menuBody}>
                     <SearchInput />
