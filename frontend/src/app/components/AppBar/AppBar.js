@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import style from './AppBar.module.css'
 
 export default function AppBar() {
@@ -6,19 +7,19 @@ export default function AppBar() {
         <nav className={style.appBar}>
             <ul className={style.menu}>
                 <li className={style.menuItem}>
-                    <a className={style.link} href="#">
+                    <Link className={style.link} to="/">
                         Cardápio
-                    </a>
+                    </Link>
                 </li>
                 <li className={style.menuItem}>
-                    <a className={style.link} href="#">
+                    <Link className={style.link} to="/onSale">
                         Promoções
-                    </a>
+                    </Link>
                 </li>
                 <li className={style.menuItem}>
-                    <a className={style.link} href="#">
+                    <Link className={style.link} to="/cart">
                         Carrinho
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </nav>

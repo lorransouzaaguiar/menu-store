@@ -23,8 +23,13 @@
 }
 
 .app {
-    background-color: var(--c6);
     border: 0px;
     padding: 0px;
     margin: 0px;
+    width: 100vw;
+    height: 100%;
+}
+
+body {
+    background-color: var(--c6);
 }
