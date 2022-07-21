@@ -6,6 +6,7 @@ export const createProduct = ({ id, ...product }) => {
         price: val(product.price).number().isRequired(),
         qtyStock: val(product.qtyStock).number().isRequired(),
         description: val(product.description).string(),
+        imageUrl: product.imageUrl,
         categoryId: val(product.category_id).number().isRequired(),
     }
 
@@ -25,6 +26,7 @@ export const createProductFromDb = (productDb) => ({
     price: productDb.product_price,
     qty: productDb.product_qtyStock,
     description: productDb.product_description,
+    imageUrl: productDb.product_image_url,
     categoryId: productDb.product_category_id,
 })
 
@@ -34,5 +36,6 @@ export const createProductToDb = (product) => ({
     product_price: product.price,
     product_qtyStock: product.qtyStock,
     product_description: product.description,
+    product_image_url: product.imageUrl,
     product_category_id: product.categoryId,
 })

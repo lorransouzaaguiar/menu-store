@@ -1,5 +1,12 @@
 import { toDouble } from '../../app/utils/number-double'
 
+/**@typedef {{id: number; product: any; qty: number; amount: number}} createCartItemParams*/
+/** @typedef {{  incrementQty: () => void;  decrementQty: () => void;  getId: () => number; getQty: () => number; getProduct: () => any;  getAmount: () => number}} createCartItemResult */
+
+/**
+ * @param {createCartItemParams} cartItem
+ * @return {createCartItemResult}
+ * */
 export const createCartItem = ({ id, product, qty = 0, amount = 0 }) => {
     const incrementQty = () => {
         qty++
@@ -42,6 +49,7 @@ export const createCartItemfromDb = (cartItemDb) =>
         product: {
             id: cartItemDb.cart_item_product_id,
             price: cartItemDb.product_price,
+            imageUrl: cartItemDb.product_image_url,
         },
         qty: cartItemDb.cart_item_qty,
         amount: cartItemDb.cart_item_amount,

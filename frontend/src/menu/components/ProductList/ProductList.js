@@ -6,7 +6,7 @@ export default function ProductList(props) {
     return (
         <>
             {props.products.map((product) => {
-                const { id, title, price, description } = product
+                const { id, title, price, description, imageUrl } = product
                 return (
                     <li key={id}>
                         <Link to={`/products/${id}`}>
@@ -14,6 +14,7 @@ export default function ProductList(props) {
                                 title={title}
                                 price={price}
                                 description={description}
+                                imageUrl={imageUrl}
                             />
                         </Link>
                     </li>

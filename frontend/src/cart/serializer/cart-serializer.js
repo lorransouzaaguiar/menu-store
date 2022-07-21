@@ -10,6 +10,7 @@ const CartItem = (data) => ({
     id: data.id,
     title: data.title,
     price: data.price,
+    imageUrl: data.imageUrl,
     qty: data.qty,
     getIncrementUrl: () => data._links['increment-qty'],
     getDecrementUrl: () => data._links['decrement-qty'],

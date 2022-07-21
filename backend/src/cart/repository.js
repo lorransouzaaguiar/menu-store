@@ -42,7 +42,8 @@ export const cartRepository = () => {
                 ' carts.*',
                 'product_id',
                 'product_title',
-                'product_price'
+                'product_price',
+                'product_image_url'
             )
             .from(CART_ITEM_TABLE)
             .join(CART_TABLE, 'cart_item_cart_id', 'cart_id')

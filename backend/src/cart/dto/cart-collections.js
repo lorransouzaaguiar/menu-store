@@ -15,6 +15,7 @@ const JsonCartItems = (data) => ({
         value: data.product_price,
         amount: data.cart_item_amount,
     },
+    imageUrl: data.product_image_url,
     qty: data.cart_item_qty,
     _links: {
         'increment-qty': `${API_URI}/cart/${data.cart_id}/item/${data.product_id}/inc`,
