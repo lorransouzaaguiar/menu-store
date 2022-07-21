@@ -1,4 +1,4 @@
-.btn {
+.container {
     width: 116px;
     height: 46px;
     display: flex;
@@ -7,27 +7,21 @@
     border: 1px solid var(--c3);
 }
 
-.btn button {
+.button {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
     color: var(--c1);
-    background-color: var(--c6);
+    background-color: var(--c5);
+}
 
-    font-family: 'Roboto';
-    font-style: normal;
+.quantity {
+    color: var(--c1);
     font-weight: 400;
     font-size: 15px;
     line-height: 18px;
 }
 
-.btn span {
-    color: var(--c1);
-
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-}
-
-.btn button:focus {
+.button:focus {
     color: var(--l3);
 }
