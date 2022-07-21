@@ -1,0 +1,16 @@
+.title {
+    background-color: var(--c4);
+    color: var(--c1);
+    height: 40px;
+    padding-left: 16px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.title h1 {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    text-transform: uppercase;
+}
