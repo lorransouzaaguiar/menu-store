@@ -17,6 +17,7 @@ exports.up = function (knex) {
                     .references('product_id')
                     .inTable('products')
                 table.integer('cart_item_qty').notNullable()
+                table.double('cart_item_amount').notNullable()
                 table.primary(['cart_item_cart_id', 'cart_item_product_id'])
             })
         }
