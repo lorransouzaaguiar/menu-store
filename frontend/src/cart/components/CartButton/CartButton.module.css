@@ -1,0 +1,12 @@
+.button {
+    width: 100%;
+    min-height: 50px;
+    color: var(--c6);
+    background-color: var(--l3);
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+
+    text-transform: uppercase;
+}

@@ -2,6 +2,9 @@
     margin: 15px;
     border: 2px solid var(--c3);
     min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .header {
@@ -10,6 +13,10 @@
     align-items: center;
     justify-content: center;
     min-height: 500px;
+}
+
+.headerWithItems {
+    padding: 8px;
 }
 
 .logo {
@@ -25,8 +32,7 @@
     color: var(--c1);
     bottom: 0;
     left: 38px;
-    font-family: 'Roboto';
-    font-style: normal;
+
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
@@ -38,13 +44,13 @@
     height: 200px;
 }
 
-.labelWrapper {
+.labelContainer {
     height: 48px;
     margin-bottom: 2px;
     display: flex;
 }
 
-.labelInfo {
+.info {
     background-color: var(--c4);
     min-width: 136px;
     height: 100%;
@@ -53,14 +59,12 @@
     align-items: center;
     color: var(--c1);
 
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
 }
 
-.labelResult {
+.result {
     background-color: var(--c5);
     width: 100%;
     display: flex;
@@ -68,8 +72,6 @@
     align-items: center;
     color: var(--c1);
 
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 21px;
@@ -81,8 +83,6 @@
     color: var(--c6);
     background-color: var(--l3);
 
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 21px;
