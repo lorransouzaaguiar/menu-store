@@ -1,0 +1,43 @@
+.card {
+    height: 100px;
+    background-color: var(--c5);
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 18px 22px;
+}
+
+.image {
+    width: 45px;
+    height: 51px;
+}
+
+.content {
+    padding-left: 21px;
+    height: 64px;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.color {
+    color: var(--c2);
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.adress {
+    color: var(--w);
+    margin-bottom: 8px;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
