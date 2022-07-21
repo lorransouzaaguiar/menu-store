@@ -15,8 +15,7 @@
     color: var(--c1);
 
     margin-bottom: 12px;
-    font-family: 'Roboto';
-    font-style: normal;
+
     font-weight: 400;
     font-size: 36px;
     line-height: 42px;
@@ -28,8 +27,6 @@
     max-height: 56px;
     margin-bottom: 12px;
 
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
@@ -39,8 +36,7 @@
     max-width: 64px;
     height: 28px;
     color: var(--v1);
-    font-family: 'Roboto';
-    font-style: normal;
+
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
@@ -50,8 +46,7 @@
     color: var(--c1);
     margin-top: 24px;
     margin-bottom: 10px;
-    font-family: 'Roboto';
-    font-style: normal;
+
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
@@ -68,8 +63,7 @@
 
 .observation .title {
     color: var(--c3);
-    font-family: 'Roboto';
-    font-style: normal;
+
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
@@ -92,8 +86,7 @@
 
 .footer .addButton .add {
     color: var(--c6);
-    font-family: 'Roboto';
-    font-style: normal;
+
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
@@ -101,8 +94,7 @@
 
 .footer .addButton .info {
     color: var(--w);
-    font-family: 'Roboto';
-    font-style: normal;
+
     font-weight: 400;
     font-size: 12px;
 }

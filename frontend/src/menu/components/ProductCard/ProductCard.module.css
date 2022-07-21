@@ -12,7 +12,7 @@
     border-radius: 10px 0px 0px 10px;
 }
 
-.content {
+.info {
     width: 100%;
     padding: 12px 15px;
 }
@@ -24,24 +24,20 @@
     margin-bottom: 22px;
 }
 
-.header .title {
+.title {
     color: var(--c1);
     height: 21px;
 
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 21px;
 }
 
-.header .titleInfo {
+.price {
     width: 64px;
     height: 28px;
     color: var(--v1);
 
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
@@ -52,8 +48,6 @@
     width: 43px;
     height: 14px;
 
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;

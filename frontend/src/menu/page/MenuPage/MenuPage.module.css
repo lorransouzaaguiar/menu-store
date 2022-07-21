@@ -1,5 +1,5 @@
 .menu {
-    padding-bottom: 15px;
+    padding: 15px;
 }
 
 .banner {
@@ -7,11 +7,7 @@
     height: 100%;
 }
 
-.menuBody {
-    padding: 15px 18px 0px 18px;
-}
-
-.menuSectionTitle {
+.sectionTitle {
     height: 50px;
     margin: 16px 0px;
     background-color: var(--l2);
@@ -19,8 +15,6 @@
     align-items: center;
     justify-content: center;
 
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 700;
     font-size: 24px;
     line-height: 28px;
