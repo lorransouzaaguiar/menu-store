@@ -1,40 +1,31 @@
 //@ts-nocheck
 
 /** @typedef {{id: number, description: string, products: []}} CategoryType */
-/** @typedef {{drinks: {}, menu: [], onSale: {}}} MenuStateType*/
+/** @typedef {{categories: [];}} MenuStateType*/
 
 /**@type {MenuStateType} */
 export const menuState = {
-    drinks: {},
-    menu: [],
-    onSale: {},
+    categories: [],
 }
 
 /** @returns {MenuStateType} */
 export const menuReducer = (/**@type {MenuStateType} */ state, action) => {
     switch (action.type) {
-        case 'FETCH_CATEGORIES': {
+        case 'FETCH_MENU': {
+            /**@type {[]} */
             const categoriesFromApi = action.payload
 
-            const drinks = categoriesFromApi.filter(
-                (category) => category.description === 'bebidas'
-            )[0]
-
-            const menu = categoriesFromApi.filter(
-                (category) =>
-                    category.description !== 'bebidas' &&
-                    category.description !== 'promoção'
-            )
-
-            const onSale = categoriesFromApi.filter(
-                (category) => category.description === 'promoção'
-            )[0]
+            const categories = categoriesFromApi.map((category) => {
+                const products = category.products.map((product) => {
+                    const price = product.price.toFixed(2).replace('.', ',')
+                    return { ...product, price: `R$ ${price}` }
+                })
+                return { ...category, products }
+            })
 
             return {
                 ...state,
-                drinks,
-                menu,
-                onSale,
+                categories,
             }
         }
     }
