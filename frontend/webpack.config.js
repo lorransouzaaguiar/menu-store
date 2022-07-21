@@ -17,6 +17,7 @@ export default {
         port: PORT,
         hot: true,
         watchContentBase: true,
+        historyApiFallback: true,
     },
     resolve: {
         extensions: ['.js', '.jsx'],
@@ -44,7 +45,6 @@ export default {
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
-
                     options: {
                         babelrc: false,
                         presets: [
