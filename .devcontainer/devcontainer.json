@@ -14,7 +14,8 @@
     "extensions": [
         "rangav.vscode-thunder-client",
         "cweijan.vscode-mysql-client2",
-        "esbenp.prettier-vscode@8.0.1"
+        "esbenp.prettier-vscode@8.0.1",
+        "cssho.vscode-svgviewer"
     ],
     "forwardPorts": [3000, 8080],
     "remoteUser": "node",
