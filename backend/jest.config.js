@@ -1,5 +1,5 @@
 export default {
-    testMatch: ['**/test/**/*.test.js'],
+    testMatch: ['**/test/**/*.test.js', '**/cart/**/test/*.test.js'],
     setupFiles: ['dotenv/config'],
     setupFilesAfterEnv: ['./knex-config-jest.js'],
     moduleNameMapper: {
