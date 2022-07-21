@@ -3,7 +3,7 @@ import SearchIcon from '@App/assets/search-input.svg'
 
 export default function SearchInput() {
     return (
-        <div className={style.box}>
+        <div className={style.container}>
             <input
                 className={style.input}
                 placeholder="Procurar no cardápio..."

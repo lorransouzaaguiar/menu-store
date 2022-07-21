@@ -1,4 +1,4 @@
-.box {
+.container {
     background-color: var(--c5);
     height: 35px;
     display: flex;
@@ -9,8 +9,7 @@
 
 .input {
     color: var(--c1);
-    font-family: 'Roboto';
-    font-style: normal;
+
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
