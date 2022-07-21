@@ -1,7 +1,8 @@
 import { httpResponse } from '@App/http/request-response'
 import { cartRepository } from '@Cart/repository'
 import { JsonCartCollection } from '@Cart/dto/cart-collections'
-import { createCartFromDb, createCartToDb } from '@Cart/entities/cart'
+import { incrementCartItemUseCase } from './use-cases/increment-cart-item'
+import { decrementCartItemUseCase } from './use-cases/decrement-cart-item'
 
 export const cartController = () => {
     const { ok, serverError } = httpResponse()
@@ -61,30 +62,10 @@ export const cartController = () => {
     const incrementItemQty = async (req, res) => {
         const { cartId, itemId } = req.params
         try {
-            const cartDbWithAllItems = await repo.getCartWithAllItems(cartId)
-            const cart = createCartFromDb(
-                cartDbWithAllItems[0],
-                cartDbWithAllItems
-            )
+            const cartFromDb = await incrementCartItemUseCase(cartId, itemId)
 
-            const cartItem = cart
-                .getItems()
-                .filter((item) => item.getProduct().id == itemId)[0]
+            const cartJson = JsonCartCollection(cartFromDb)
 
-            cartItem.incrementQty()
-            cart.calculateOrderPrice()
-            cart.calculatePurchasePrice()
-
-            const cartToDb = createCartToDb(cart)
-
-            await repo.updateOneItem(cartItem)
-            await repo.updateCart(cartToDb)
-
-            const updatedCartDbWithAllItems = await repo.getCartWithAllItems(
-                cartId
-            )
-
-            const cartJson = JsonCartCollection(updatedCartDbWithAllItems)
             return res
                 .status(ok.statusCode)
                 .send(ok.body({ cart: { ...cartJson } }))
@@ -96,30 +77,9 @@ export const cartController = () => {
     const decrementItemQty = async (req, res) => {
         const { cartId, itemId } = req.params
         try {
-            const cartDbWithAllItems = await repo.getCartWithAllItems(cartId)
-            const cart = createCartFromDb(
-                cartDbWithAllItems[0],
-                cartDbWithAllItems
-            )
+            const cartFromDb = await decrementCartItemUseCase(cartId, itemId)
 
-            const cartItem = cart
-                .getItems()
-                .filter((item) => item.getProduct().id == itemId)[0]
-
-            cartItem.decrementQty()
-            cart.calculateOrderPrice()
-            cart.calculatePurchasePrice()
-
-            const cartToDb = createCartToDb(cart)
-
-            await repo.updateOneItem(cartItem)
-            await repo.updateCart(cartToDb)
-
-            const updatedCartDbWithAllItems = await repo.getCartWithAllItems(
-                cartId
-            )
-
-            const cartJson = JsonCartCollection(updatedCartDbWithAllItems)
+            const cartJson = JsonCartCollection(cartFromDb)
             return res
                 .status(ok.statusCode)
                 .send(ok.body({ cart: { ...cartJson } }))
