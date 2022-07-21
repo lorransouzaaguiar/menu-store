@@ -4,7 +4,7 @@ import style from './AppBar.module.css'
 
 export default function AppBar() {
     return (
-        <nav className={style.appBar}>
+        <nav className={style.container}>
             <ul className={style.menu}>
                 <li className={style.menuItem}>
                     <Link className={style.link} to="/">
