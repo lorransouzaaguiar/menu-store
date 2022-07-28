@@ -1,8 +1,6 @@
 {
     "compilerOptions": {
         "jsx": "react",
-        "target": "ES5",
-        "module": "ES2015",
         "moduleResolution": "node",
         "baseUrl": "src/",
         "paths": {

@@ -7,6 +7,7 @@ import ProductDetailsPage from '@Menu/page/ProductDetailsPage/ProductDetailsPage
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 export default function AppRoute() {
+    //return <MenuPage />
     return (
         <BrowserRouter>
             <Routes>

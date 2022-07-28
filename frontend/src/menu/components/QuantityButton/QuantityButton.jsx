@@ -1,4 +1,3 @@
-import { CartContext } from '@Cart/context/cart-context'
 import styles from './QuantityButton.module.css'
 
 export default function QuantityButton(props) {

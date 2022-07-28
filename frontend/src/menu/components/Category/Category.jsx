@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ProductList from '@Menu/components/ProductList/ProductList.js'
+import ProductList from '@Menu/components/ProductList/ProductList'
 import style from './Category.module.css'
 
 export default function Category(props) {

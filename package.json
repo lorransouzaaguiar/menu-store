@@ -9,6 +9,7 @@
         "front": "yarn workspace frontend",
         "dev:f": "yarn front dev",
         "build:f": "yarn front build",
+        "preview:f": "yarn front preview",
         "test:f": "yarn front test",
         "test:f_clean": "yarn front jest_clean",
         "add:f": "yarn front add",
