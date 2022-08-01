@@ -4,3 +4,5 @@ yarn-error.log
 .npmrc
 database.js
 db-mock.js
+run-actions.sh
+.vscode/
