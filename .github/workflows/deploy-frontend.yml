@@ -1,0 +1,55 @@
+name: Deploy Frontend
+on:
+    push:
+        branches: [dev]
+
+defaults:
+  run:
+    working-directory: frontend
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v3
+
+          - name: test
+            run: echo ${{ secrets.HEROKU_API_KEY }}
+
+          - name: Authenticate private Github package
+            run: | 
+              touch .npmrc
+              echo "@lorransouzaaguiar:registry=https://npm.pkg.github.com/" >> .npmrc
+              echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+              echo "registry=https://registry.npmjs.org" >> .npmrc
+
+          - name: Cache Node Modules
+            uses: actions/cache@v3
+            id: cache-nodemodules
+            env:
+                cache-name: cache-node-modules
+            with:
+                path: node_modules
+                key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+                restore-keys: |
+                    ${{ runner.os }}-build-${{ env.cache-name }}-
+                    ${{ runner.os }}-build-
+                    ${{ runner.os }}-
+
+          - name: Install dependencies
+            if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+            run: npm ci
+          
+          - name: Build
+            run: npm run build
+
+          - run: ls -la
+ 
+          - name: Deploy
+            uses: akhileshns/heroku-deploy@v3.12.12
+            with:
+              heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+              heroku_app_name: "online-menu-front-dev"
+              heroku_email: "lorransouzaaguiar.yt@gmail.com"
+              appdir: "frontend"
+          
