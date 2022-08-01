@@ -9,7 +9,7 @@
         "jest_clean": "jest --clearCache",
         "dev": "vite",
         "build": "vite build",
-        "preview": "vite preview"
+        "start": "vite preview"
     },
     "dependencies": {
         "@babel/preset-env": "^7.18.2",
